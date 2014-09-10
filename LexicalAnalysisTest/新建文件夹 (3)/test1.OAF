@@ -1,0 +1,77 @@
+Dim SelectContractID	As String
+
+Private Sub Child_Load()
+	Dim I As Long
+	'合同
+	ListMainContract.AddHeader "合同编号",80,0
+	ListMainContract.AddHeader "合同名称",240,0
+	ListMainContract.AddHeader "甲方名称",240,0
+	ListMainContract.AddHeader "签订日期",80,2
+	ListMainContract.AddHeader "合同金额",80,1
+	ListMainContract.AddHeader "产值",100,1
+	ListMainContract.AddHeader "本期完成",100,1
+	ListMainContract.AddHeader "审查",80,1
+	ListMainContract.AddHeader "合同状态",80,2
+	ListMainContract.AddHeader "合同类型",80,2
+	ListMainContract.AddHeader "负责部门",120,0
+	
+ 
+    '合同额
+    ListDepartment.AddHeader "部门名称",150,0
+    ListDepartment.AddHeader "产值阶段",150,0
+    ListDepartment.AddHeader "产值类型",60,2
+    ListDepartment.AddHeader "项目产值",80,1
+    ListDepartment.AddHeader "本期产值",80,1
+    ListDepartment.AddHeader "审查",80,1
+    ListDepartment.AddHeader "进度",80,2
+    ListDepartment.AddHeader "说明",200,0
+    '合同文件
+    ListPartner.AddHeader "合作方名称",150,0
+    ListPartner.AddHeader "产值阶段",150,0
+    ListPartner.AddHeader "产值类型",60,2
+    ListPartner.AddHeader "项目产值",80,1
+    ListPartner.AddHeader "本期产值",80,1
+    ListPartner.AddHeader "进度",80,2
+    ListPartner.AddHeader "说明",200,0
+    '查询字段
+    txtQueryField.AddItem "合同名称"
+    txtQueryField.AddItem "甲方名称"
+    txtQueryField.AddItem "签定日期"
+    txtQueryField.AddItem "合同金额"
+
+   
+    '统计区间
+	For I = 0 To 3
+		txtQueryTerm.AddItem Format(Year(Now)+I,"0000") & "年第一季度"
+		txtQueryTerm.AddItem Format(Year(Now)+I,"0000") & "年第二季度"
+		txtQueryTerm.AddItem Format(Year(Now)+I,"0000") & "年第三季度"
+		txtQueryTerm.AddItem Format(Year(Now)+I,"0000") & "年第四季度"
+	Next I
+	txtQueryTerm.SelectIndex = 1  
+
+	
+	
+   Server.RunSQL ListMainContract.ShowList, "ListDepWorkOut",txtQueryTerm.Text	
+End Sub
+
+Private Sub ListMainContract_ItemClick()
+	'内部产值
+	Server.RunSQL ListDepartment.ShowList,"ListContractWorkoutInside",ListMainContract.SelectID,txtQueryTerm.Text
+	'分包产值
+	Server.RunSQL ListPartner.ShowList,"ListContractWorkoutOutside",ListMainContract.SelectID,txtQueryTerm.Text
+End Sub
+
+Private Sub txtQueryTerm_Click()
+	Server.RunSQL ListMainContract.ShowList, "ListDepWorkOut",txtQueryTerm.Text
+End Sub
+
+Private Sub cmdQuery_Click()
+	
+	Server.RunSQL ListMainContract.ShowList, "FindMainContractWorkoutDep",txtQueryField.Text,txtQueryValue.Text,txtQueryTerm.Text
+	 
+End Sub
+
+
+
+
+

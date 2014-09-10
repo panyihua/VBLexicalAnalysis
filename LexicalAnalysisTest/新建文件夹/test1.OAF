@@ -1,0 +1,29 @@
+
+Dim SelfID as String
+Private Sub cmdCancel_Click()
+	Unload Me
+End Sub
+
+private Sub Form_Load()
+	Server.RunSQL txtDepartMent.ShowKeyList,"ListALLDepartments2",""
+	
+End Sub
+
+
+
+
+
+Private Sub doSaveDevice(newDeviceId As String)
+
+
+	Server.RunSQL "Null","FASaveDevice", newDeviceId,txtSeq.Text,txtUser.Text,txtPurchaseDate.Text,txtDepartment.SelectID,txtStyle.Text,txtName.Text,txtExpiredtime.Text,txtMoney.Text,txtStyle2.Text,txtCPU.Text,txtMotherboard.Text,txtMemory.Text,txtGraphicCard.Text,txtDisk.Text,txtNetAdapter.Text,txtCDROM.Text,txtRem.Text,txtStatus.Text,"TYPE000001"
+	Global.ShowMessage("ÃÌº”ÕÍ≥…!")
+	Unload Me
+
+End Sub
+
+
+Private Sub cmdConfirm_Click()
+	Server.RunSQL doSaveDevice,"FAGetNewDeviceId"
+
+End Sub

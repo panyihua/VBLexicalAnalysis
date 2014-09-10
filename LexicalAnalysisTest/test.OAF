@@ -1,0 +1,317 @@
+Begin VB.PictureBox BoxMainContract
+	Left            =   0
+	Top             =   0
+	Right           =   0
+	Bottom          =   0
+	Chamfer 		=   15	    	
+End
+
+Begin VB.TabStrip BoxMainContractDetail
+			Height          =   253
+			Left            =   1
+			Bottom          =   1
+			Right           =   1
+			 		 			 	 
+End	
+
+Begin VB.PictureBox BoxGernal
+			 	Caption     =    "合同内容"
+			 	Top         =    30
+			 	Left        =    10
+			 	Right       =    10
+			 	Bottom      =    10
+				
+			 End
+			 Begin VB.PictureBox BoxContact
+			 	Caption     =    "合同额"
+			 	Top         =    30
+			 	Left        =    10
+			 	Right       =    10
+			 	Bottom      =    10
+			 	 	
+			 End
+			 Begin VB.ListBox ListAmount
+			 		Top 			= 	0
+			 		Left 			= 	0
+			 		Right 			= 	0
+			 		Bottom 			= 	0
+			 		RowHeight		    =   16
+			 		AutoSum			=   True
+					ShowRowHeader   =   True
+					HeaderFontColor =   083772
+					HeaderFont		=   "S9B"
+			 	End			
+			 Begin VB.PictureBox BoxGetAmount
+			 	Caption     =    "到款"
+			 	Top         =    30
+			 	Left        =    10
+			 	Right       =    10
+			 	Bottom      =    10
+			  	
+			 End
+			 	Begin VB.ListBox ListGetAmount
+			 		Top 			= 	0
+			 		Left 			= 	0
+			 		Width 			= 	256
+			 		Bottom 			= 	0
+			 		RowHeight		    =   16
+			 		AutoSum			=   True
+			 		ShowRowHeader 	= 	True
+			 		HeaderFontColor = 	083772
+			 		HeaderFont		=   "S9B"
+			 	End
+			 	Begin VB.ListBox ListGetAmountDetail
+			 		Top 			= 	0
+			 		Left 			= 	266
+			 		Right 			= 	0
+			 		Bottom 			= 	0
+			 		RowHeight		    =   16
+			 		AutoSum			=   True
+			 		ShowRowHeader 	= 	True
+			 		HeaderFontColor = 	083772
+			 		HeaderFont		=   "S9B"
+			 	End			
+			 	
+			 Begin VB.PictureBox BoxSubContract
+			 	Caption     =    "托外合同"
+			 	Top         =    30
+			 	Left        =    10
+			 	Right       =    10
+			 	Bottom      =    10
+			 
+			 End
+			 	Begin VB.ListBox ListSubContract
+				 	Top 			= 	0
+			 		Left 			= 	0
+			 		Right 			= 	0
+			 		Bottom 			= 	0
+			 		RowHeight		    =   16
+			 		AutoSum			=   True
+					ShowRowHeader   =   True
+					HeaderFontColor =   083772
+					HeaderFont		=   "S9B"
+			 	End
+			 Begin VB.PictureBox BoxFile
+			 	Caption     =    "合同文件"
+			 	Top         =    30
+			 	Left        =    10
+			 	Right       =    10
+			 	Bottom      =    10
+				
+			 End	
+			 Begin VB.CommandButton cmdNewFile
+					Height          =   21
+					Bottom          =   6
+					Width           =   72
+					Right			=   246
+					Caption		    =   "新建"	  
+				End
+				Begin VB.CommandButton cmdOpenFile
+					Height          =   21
+					Bottom          =   6
+					Width           =   72
+					Right			=   166
+					Caption		    =   "打开"	  
+				End
+				Begin VB.CommandButton cmdExportFile
+					Height          =   21
+					Bottom          =   6
+					Width           =   72
+					Right			=   86
+					Caption		    =   "导出"	  
+				End								
+				Begin VB.CommandButton cmdDeleteFile
+					Height          =   21
+					Bottom          =   6
+					Width           =   72
+					Right			=   6
+					Caption		    =   "删除"	  
+				End	 	
+			 	Begin VB.ListBox ListFile
+				 	Top 			= 	0
+			 		Left 			= 	0
+			 		Right 			= 	0
+			 		Bottom 			= 	30
+			 		RowHeight		    =   16
+					ShowRowHeader   =   True
+					HeaderFontColor =   083772
+					HeaderFont		=   "S9B"	 		
+			 	End		
+
+Begin VB.Label LabQueryOrg
+		Left            =   6
+		Top             =   6
+		Width           =   66
+		Height          =   21
+		Align           =    2
+		HeaderFont		=   083772
+		Caption		    =   "内容:"
+	End
+	Begin VB.Label LabQueryName
+		Left            =   272
+		Top             =   6
+		Width           =   66
+		Height          =   21
+		Align           =    2
+		HeaderFont		=   083772
+		Caption		    =   "条件:"
+	End	
+	Begin VB.ComboBox txtQueryField
+		Left            =   80
+		Top             =   6
+		Width           =   166
+		Height          =   21
+	End
+	Begin VB.TextBox txtQueryValue
+		Left            =   346
+		Top             =   6
+		Width           =   166
+		Height          =   21
+	End	
+	Begin VB.CommandButton cmdQuery
+		Height          =   21
+		Top             =   6
+		Width           =   72
+		Left			=   539
+		Caption		    =   "查询"	  
+	End
+	
+	Begin VB.Label LabQueryDepartMent
+		Left            =   639
+		Top             =   6
+		Width           =   66
+		Height          =   21
+		Align           =    2
+		HeaderFont		=   083772
+		Caption		    =   "生产部门:"
+	End	
+	Begin VB.ComboBox txtQueryDepartment
+		Left            =   713
+		Top             =   6
+		Right           =   6
+		Height          =   21
+	End
+		Begin VB.ListBox ListMainContract
+			Left            =   0
+			Top             =   30
+			Right           =   0
+			Bottom          =   260
+			Rowheight       =   16
+			ShowRowHeader   =   True
+			AutoSum			    =   True
+			HeaderFontColor =   083772
+			HeaderFont		  =   "S9B"
+		End
+		
+Begin VB.Label LabName
+					Left            =   10
+					Top             =   20
+					Width           =   100
+					Height          =   21
+					Align           =    1
+					FontColor       =   083772
+					Caption		    =   "名称:"
+				End
+				Begin VB.Label LabConsumer
+					Left            =   10
+					Top             =   48
+					Width           =   100
+					Height          =   21
+					Align           =    1
+					FontColor       =   083772
+					Caption		    =   "甲方名称:"
+				End
+				Begin VB.Label LabDate
+					Left            =   10
+					Top             =   76
+					Width           =   100
+					Height          =   21
+					Align           =    1
+					FontColor       =   083772
+					Caption		    =   "合同编号:"
+				End
+				Begin VB.Label LabSignedDate
+					Left            =   10
+					Top             =   104
+					Width           =   100
+					Height          =   21
+					Align           =    1
+					FontColor       =   083772
+					Caption		    =   "合同签订日期:"
+				End	
+				Begin VB.Label LabAmount
+					Left            =   10
+					Top             =   132
+					Width           =   100
+					Height          =   21
+					Align           =    1
+					FontColor       =   083772
+					Caption		    =   "合同总金额:"
+				End	
+				Begin VB.Label LabCode
+					Left            =   10
+					Top             =   160
+					Width           =   100
+					Height          =   21
+					Align           =    1
+					FontColor       =   083772
+					Caption		    =   "合同编号:"
+				End	
+				Begin VB.Label LabContent
+					Left            =   10
+					Top             =   160
+					Width           =   100
+					Height          =   21
+					Align           =    1
+					FontColor       =   083772
+					Caption		    =   "内容:"
+				End				
+				Begin VB.TextBox txtName
+					Left            =   120
+					Top             =   20
+					Right           =   10
+					Height          =   21
+				End
+				Begin VB.TextBox txtConsumer
+					Left            =   120
+					Top             =   48
+					Right           =   10
+					Height          =   21
+				End
+				Begin VB.TextBox txtDate
+					Left            =   120
+					Top             =   76
+					Right           =   10
+					Height          =   21
+				End
+				Begin VB.TextBox txtSignedDate
+					Left            =   120
+					Top             =   104
+					Right           =   10
+					Height          =   21
+				End	
+				Begin VB.TextBox txtAmount
+					Left            =   120
+					Top             =   132
+					Right           =   10
+					Height          =   21
+				End	
+				Begin VB.TextBox txtCode
+					Left            =   120
+					Top             =   160
+					Right           =   10
+					Height          =   21
+				End
+				Begin VB.RichTextBox txtContent
+					Left            =   120
+					Top             =   160
+					Right           =   10
+					Height          =   50
+				End
+				Begin VB.CommandButton cmdMainOut
+					Height          =   18
+					Top             =   210
+					Width           =   72
+					Right			=   10
+					Caption		    =   "导出Excel"	  
+				End 

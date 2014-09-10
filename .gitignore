@@ -1,0 +1,8 @@
+*.pdb
+*.sdf
+*.tlog
+*.ilk
+*.exe
+/Debug/
+/Release/
+/LexicalAnalysisTest/Debug/

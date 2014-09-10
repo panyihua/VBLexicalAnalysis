@@ -1,0 +1,326 @@
+Begin VB.Form FAcomputerNew
+	Left            =   333
+	Top             =   200
+	Width           =   600
+	Height          =   600
+	ShowType        =   1
+	Caption         =   "添加电脑主机"
+
+End
+
+Begin VB.Label LabUser
+		Left            =   12
+		Top             =   12
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "使用者:"
+	End
+	Begin VB.Label LabDepartment
+		Left            =   312
+		Top             =   12
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "使用部门:"
+	End	
+		Begin VB.TextBox txtUser
+		Height          =   21
+		Top             =   12
+		Left            =   100
+		Right			=   312
+
+	End
+	Begin VB.ComboBox txtDepartment
+		Height          =   21
+		Top             =   12
+		Left            =   420
+		Right			=   12
+		Locked          =   true
+	End	
+	
+	Begin VB.Label LabName
+		Left            =   12
+		Top             =   40
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "名称:"
+	End
+	Begin VB.Label LabMoney
+		Left            =   312
+		Top             =   40
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "采购费用:"
+	End
+			Begin VB.TextBox txtName
+		Height          =   21
+		Top             =   40
+		Left            =   100
+		Right			=   312
+
+	End
+	Begin VB.TextBox txtMoney
+		Height          =   21
+		Top             =   40
+		Left            =   420
+		Right			=   12
+		InputType       =   Number
+		Format          =   Standard
+	End
+	
+	
+	
+	
+	Begin VB.Label LabPurchaseDate
+		Left            =   12
+		Top             =   68
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "采购日期:"
+	End
+	Begin VB.Label LabexpiredTime
+		Left            =   312
+		Top             =   68
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "使用年限:"
+	End	
+		Begin VB.DateTime txtPurchaseDate
+		Height          =   21
+		Top             =   68
+		Left            =   100
+		Right			=   312
+	End
+	Begin VB.TextBox txtExpiredTime
+		Left            =   420
+		Top             =   68
+		Right           =   12
+		Height          =   21
+	End		
+	
+	
+	Begin VB.Label LabStyle
+		Left            =   12
+		Top             =   96
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "规格:"
+	End
+	Begin VB.Label LabStyle2
+		Left            =   312
+		Top             =   96
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "购置类型:"
+	End
+ 	Begin VB.TextBox txtStyle
+		Height          =   21
+		Top             =   96
+		Left            =   100
+		Right			=   312
+	End
+	Begin VB.TextBox txtStyle2
+		Left            =   420
+		Top             =   96
+		Right           =   12
+		Height          =   21
+	End	
+
+	
+		Begin VB.Label LabStatus
+		Left            =   12
+		Top             =   124
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "使用状态:"
+	End
+		Begin VB.Label LabSeq
+		Left            =   312
+		Top             =   124
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "编号:"
+	End
+		Begin VB.TextBox txtStatus
+		Left            =   100
+		Top             =   124
+		Right           =   312
+		Height          =   21
+	End	
+		Begin VB.TextBox txtSeq
+		Left            =   420
+		Top             =   124
+		Right           =   12
+		Height          =   21
+	End	
+
+	
+		Begin VB.Label LabCPU
+		Left            =   12
+		Top             =   152
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "CPU:"
+	End
+	Begin VB.Label LabMotherboard
+		Left            =   312
+		Top             =   152
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "主板:"
+	End
+	Begin VB.TextBox txtCPU
+		Height          =   21
+		Top             =   152
+		Left            =   100
+		Right			=   312
+	End
+	Begin VB.TextBox txtMotherboard
+		Left            =   420
+		Top             =   152
+		Right           =   12
+		Height          =   21
+	End	
+	
+		Begin VB.Label LabMemory
+		Left            =   12
+		Top             =   180
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "内存:"
+	End
+	Begin VB.Label LabGraphicCard
+		Left            =   312
+		Top             =   180
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "显卡:"
+	End
+	Begin VB.TextBox txtMemory
+		Height          =   21
+		Top             =   180
+		Left            =   100
+		Right			=   312
+	End
+	Begin VB.TextBox txtGraphicCard
+		Left            =   420
+		Top             =   180
+		Right           =   12
+		Height          =   21
+	End	
+ 
+ Begin VB.Label LabDisk
+		Left            =   12
+		Top             =   208
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "硬盘:"
+	End
+	Begin VB.Label LabNetAdapter
+		Left            =   312
+		Top             =   208
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "网卡:"
+	End
+	Begin VB.TextBox txtDisk
+		Height          =   21
+		Top             =   208
+		Left            =   100
+		Right			=   312
+	End
+	Begin VB.TextBox txtNetAdapter
+		Left            =   420
+		Top             =   208
+		Right           =   12
+		Height          =   21
+	End	
+	
+	Begin VB.Label LabCDROM
+		Left            =   12
+		Top             =   236
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "CDROM:"
+	End
+	Begin VB.TextBox txtCDROM
+		Height          =   21
+		Top             =   236
+		Left            =   100
+		Right			=   312
+	End
+
+	
+		Begin VB.Label LabRem
+		Left            =   12
+		Top             =   264
+		Width           =   66
+		Height          =   21
+		Align           =   1
+		FontColor       =   083772
+		Caption         =   "备注:"
+	End
+	Begin VB.TextBox txtRem
+		Height          =   21
+		Top             =   264
+		Left            =   100
+		Right			=   12
+	End
+
+ 
+
+ 
+ 
+  
+
+	
+
+
+				
+	Begin VB.CommandButton cmdConfirm
+		Height          =   21
+		Bottom          =   12
+		Width           =   72
+		Right			=   92
+		Caption		    =   "确定"	  
+	End	
+	Begin VB.CommandButton cmdCancel
+		Height          =   21
+		Bottom          =   12
+		Width           =   72
+		Right			=   12
+		Caption		    =   "取消"	  
+	End

@@ -1,0 +1,152 @@
+
+Begin VB.PictureBox BoxMainContract
+	Left            =   0
+	Top             =   0
+	Right           =   0
+	Bottom          =   0
+	Chamfer			=   15
+	Border          =   False
+	BackColor       =   E0E3E8
+	 	    	
+End
+
+Begin VB.PictureBox BoxQuery
+		Left 		=   0
+		Top         =   0
+		Height      =   36
+		Right       =   0
+		Chamfer     =   15
+		
+	End
+	Begin VB.Label LabQueryTerm
+			Left            =   6
+			TabIndex        =   27
+			Top             =   6
+			Width           =   66
+			Height          =   21
+			Align           =    2
+			FontColor		=   083772
+			Caption		    =   "统计区间:"
+		End		
+		Begin VB.Label LabQueryOrg
+			Left            =   272
+			TabIndex        =   27
+			Top             =   6
+			Width           =   66
+			Height          =   21
+			Align           =    2
+			FontColor		=   083772
+			Caption		    =   "内容:"
+			
+		End
+		Begin VB.Label LabQueryName
+			Left            =   539
+			TabIndex        =   27
+			Top             =   6
+			Width           =   66
+			Height          =   21
+			Align           =    2
+			FontColor		=   083772
+			Caption		    =   "条件:"
+			
+		End
+		Begin VB.ComboBox txtQueryTerm
+			Left            =   80
+			TabIndex        =   27
+			Top             =   6
+			Width           =   166
+			Height          =   21
+			
+		End		
+		Begin VB.ComboBox txtQueryField
+			Left            =   346
+			TabIndex        =   27
+			Top             =   6
+			Width           =   166
+			Height          =   21
+			
+		End
+		Begin VB.TextBox txtQueryValue
+			Left            =   646
+			TabIndex        =   27
+			Top             =   6
+			Right           =   80
+			Height          =   21
+			
+		End	
+		Begin VB.CommandButton cmdQuery
+			Height          =   21
+			TabIndex        =   27
+			Top             =   6
+			Width           =   72
+			Right			=   6
+			Caption		    =   "查询"	
+			
+		End
+
+		Begin VB.ListBox ListMainContract
+			Left            =   0
+			Top             =   30
+			Right           =   0
+			Bottom          =   293
+			RowHeight       =   16
+			ShowRowHeader   =   True
+			AutoSum	    =   True
+			HeaderFontColor =   083772
+			Chamfer  		=   15
+			HeaderFont		=   "S9B"
+		End
+		Begin VB.TabStrip BoxMainContractDetail
+			Height          =   286
+			Left            =   0
+			Bottom          =   0
+			Right           =   0
+					 			 	 
+	End   
+	
+	Begin VB.PictureBox BoxContact
+				Caption     =    "内部产值"
+			 	Top         =    30
+			 	Left        =    0
+			 	Right       =    0
+			 	Bottom      =    0
+			 	Border		=   False		 	
+				 	
+			 End	 
+			 
+			 	Begin VB.ListBox ListDepartment
+			 		Top 			= 	0
+			 		Left 			= 	0
+			 		Right 			= 	0
+			 		Bottom 			= 	36
+			 		RowHeight		    =   16
+			 		HeaderFont 		=  	"S9B"
+			 		AutoSum			=   True
+			 		ShowRowHeader 	= 	True
+			 		HeaderFontColor = 	083772
+			 	End			
+			 Begin VB.PictureBox BoxFile
+			 	Caption     =    "合作方产值"
+			 	Top         =    30
+			 	Left        =    10
+			 	Right       =    10
+			 	Bottom      =    10
+			 	Border		=   False
+				
+			 End		
+			 	 			 	
+			 	Begin VB.ListBox ListPartner
+			 		Top 			= 	0
+			 		Left 			= 	0
+			 		Right 			= 	0
+			 		Bottom 			= 	36
+			 		RowHeight		    =   16
+			 		HeaderFont 		=  	"S9B"
+			 		AutoSum			=   True
+			 		ShowRowHeader 	= 	True
+			 		HeaderFontColor = 	083772		 		
+			 	End	 
+
+
+
+

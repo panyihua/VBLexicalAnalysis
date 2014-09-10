@@ -1,0 +1,169 @@
+Dim SelectContractID	As String
+
+Private Sub Child_Load()
+	'合同
+	ListMainContract.AddHeader "合同编号",80,0
+	ListMainContract.AddHeader "合同名称",240,0
+	ListMainContract.AddHeader "甲方名称",240,0
+	ListMainContract.AddHeader "签订日期",80,2
+	ListMainContract.AddHeader "合同金额",80,1
+	ListMainContract.AddHeader "已到款",80,1
+	ListMainContract.AddHeader "到款率",80,2
+	ListMainContract.AddHeader "欠款数额",80,1
+	ListMainContract.AddHeader "合同状态",80,2
+	ListMainContract.AddHeader "合同类型",80,2
+	ListMainContract.AddHeader "负责部门",120,0
+	
+    Server.RunSQL ListMainContract.ShowList, "ListEndMainContract2",""
+    Server.RunSQL txtQueryDepartment.ShowKeyList,"ListRealDepartment"
+    '合同额
+    ListAmount.AddHeader "日期",80,2
+    ListAmount.AddHeader "合同总金额",80,2
+    ListAmount.AddHeader "类型",80,2
+    ListAmount.AddHeader "状态",200,0
+    '到款
+    ListGetAmount.AddHeader "日期",100,0
+    ListGetAmount.AddHeader "金额",100,1
+    '到款明细
+    ListGetAmountDetail.AddHeader "名称",200,0
+    ListGetAmountDetail.AddHeader "金额",200,0
+    ListGetAmountDetail.AddHeader "已到款",200,0
+    ListGetAmountDetail.AddHeader "余款",200,0
+    '拖外合同
+    ListSubContract.AddHeader "合同名称",240,0
+    ListSubContract.AddHeader "合同性质",180,0
+    ListSubContract.AddHeader "乙方名称",240,0
+    ListSubContract.AddHeader "合同金额",80,1
+    ListSubContract.AddHeader "签定日期",80,2    
+    ListSubContract.AddHeader "合同编号",180,0
+    '合同文件
+    ListFile.AddHeader "文件名",300,0
+    ListFile.AddHeader "提交日期",100,2
+	ListFile.AddHeader "大小",100,1
+    '查询字段
+    txtQueryField.AddItem "合同名称"
+    txtQueryField.AddItem "甲方名称"
+    txtQueryField.AddItem "签定日期"
+    txtQueryField.AddItem "合同金额"
+End Sub
+
+Private Sub ShowMainContract(Fields() as String)
+	Dim str 			As String
+	SelectContractID = Fields(0)
+	txtName.Text = Fields(1)
+	txtConsumer.Text = Fields(3)
+	txtDate.Text = Fields(8)
+	txtSignedDate.Text = Fields(9)
+	txtAmount.Text = Fields(12)
+	txtCode.Text = Fields(4)
+	str  =  Fields(10)
+	txtContent.Text =str  & Fields(11) 
+	
+	txtContent.Draw   =   True
+End Sub
+
+Private Sub ListMainContract_ItemClick()
+	'合同额
+	Server.RunSQL ListAmount.ShowList,"ListContractAmount",ListMainContract.SelectID
+	'合同文件
+	Server.RunSQL ListFile.ShowList,"ListContractFile",ListMainContract.SelectID
+	'相关拖外合同
+	Server.RunSQL ListSubContract.ShowList,"ListMainContractSub",ListMainContract.SelectID
+	'到款'到款明细
+	Server.RunSQl ListGetAmount.ShowList,"ListContractGetAmount",ListMainContract.SelectID
+	Server.RunSQl ListGetAmountDetail.ShowList,"ListContractGetAmountDetail",ListMainContract.SelectID
+	'合同基本信息
+	Server.RunSQL ShowMainContract,"ShowMainContract",ListMainContract.SelectID
+End Sub
+
+
+
+Private Sub txtQueryDepartment_Click()
+	Server.RunSQL ListMainContract.ShowList, "FindDepartmentEndContract",txtQueryDepartment.Text
+End Sub
+
+Private Sub cmdQuery_Click()
+	Server.RunSQL ListMainContract.ShowList, "FindMainContractEnd",txtQueryField.Text,txtQueryValue.Text
+End Sub
+
+
+Private Sub RefreshMainContract(Fields() as String)
+	ListMainContract.FindItem Fields(0)
+	If ListMainContract.SelectID = Fields(0) then
+		ListMainContract.SubItem1 = Fields(1)
+		ListMainContract.SubItem2 = Fields(2)
+		ListMainContract.SubItem3 = Fields(3)	
+		ListMainContract.SubItem4 = Fields(4)
+		ListMainContract.SubItem5 = Fields(5)
+		ListMainContract.SubItem6 = Fields(6)
+		ListMainContract.SubItem7 = Fields(7)	
+		ListMainContract.SubItem8 = Fields(8)
+		ListMainContract.SubItem9 = Fields(9)
+		ListMainContract.SubItem10 = Fields(10)
+		ListMainContract.SubItem11 = Fields(11)			
+	End if
+End Sub
+
+Private Sub ListMainContract_DBClick()
+	Dim sID 			As String
+	sID = ListMainContract.SelectID
+	Explorer.ShowFile "frmEditMainContract.OAF",1
+	If frmEditMainContract.EditMainContract(sID) = 1 Then
+		Server.RunSQL ListMainContract.ShowList, "ListEndMainContract",""
+	End If
+End Sub
+
+
+Private Sub cmdOpenFile_Click()
+	'打开文件
+   	Server.RunSQL Explorer.ShellOpenFile,"OpenContractFile",ListFile.SelectID
+End Sub
+
+Private Sub cmdExportFile_Click()
+	'导出文件
+    Dim FileName as String
+    Explorer.SaveFile ListFile.SubItem1
+    FileName = Explorer.SaveFileName
+    If Len(FileName) > 0 Then
+    	Server.RunSQL Explorer.ShellSaveFile,"ExportAttachment",ListFile.SelectID,FileName
+    End If	
+End Sub
+
+Private Sub CodeFileExportOK_Click()
+	Global.ShowMessage "文件导出成功"
+End Sub
+
+
+Private Sub ListFile_DBClick()
+	'双击文件列表
+	Call cmdOpenFile_Click
+End Sub
+
+Private Sub cmdMainOut_Click()
+	Explorer.SaveFile("已完成承外合同列表.xls")
+	If Len(Explorer.SaveFileName) > 0 Then
+		ListMainContract.SaveFile(Explorer.SaveFileName)
+		Global.ShowMessage("导出成功!")
+	End If
+End Sub
+
+
+Private Sub cmdNewFile_Click()
+	'添加合同文件
+    Dim FileName as String
+    Explorer.SelectFile "*.*"
+    FileName = Explorer.OpenFileName
+    If Len(FileName) > 0 Then
+    	Explorer.SendFile FileName
+    	Server.RunSQL CodeFileSaveOK,"SaveContractFile",ListMainContract.SelectID,Explorer.OpenFileTitle,Explorer.OpenFileSize
+    End If
+End Sub
+
+
+Private Sub cmdDeleteFile_Click()
+	删除合同文件
+	If Global.AskyesNo("您确定需要删除选定的合同文件吗?")=1 Then
+		Server.RunSQL "", "DeleteContractFile",ListFile.SelectID
+		ListFile.RemoveItem ListFile.SelectIndex
+	end if
+End Sub
