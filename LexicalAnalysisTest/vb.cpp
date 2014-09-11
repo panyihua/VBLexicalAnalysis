@@ -751,8 +751,5 @@ void main()
 	string *s2 = new string("aaa");
 	vec.push_back(s2);
 	(*s2)[0] = 'q';
-
-
-	
 	system("pause");
 }

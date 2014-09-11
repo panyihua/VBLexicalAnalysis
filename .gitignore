@@ -3,6 +3,8 @@
 *.tlog
 *.ilk
 *.exe
+*.opensdf
 /Debug/
 /Release/
 /LexicalAnalysisTest/Debug/
+/ipch/
